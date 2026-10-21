@@ -6,7 +6,6 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="refresh" content="900">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="RGC Practice">
@@ -49,6 +48,11 @@
             font-size: 0.72rem;
             color: #6b7280;
             display: inline-block;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .snapshot-bar:active {
+            background-color: #e5e7eb;
         }
         .filter-section {
             margin-bottom: 10px;
@@ -198,8 +202,8 @@
             <h1>Rotherham Golf Club</h1>
             <div class="subtitle" id="slotCounter">Practice Windows (showing 9 of 9 slots)</div>
         </div>
-        <div class="snapshot-bar">
-            Snapshot: <strong>21/10/2026 15:14:02</strong> (auto-refreshes every 15m)
+        <div class="snapshot-bar" onclick="forceRefresh()" style="cursor:pointer;" title="Tap to refresh">
+            Snapshot: <strong>21/10/2026 15:25:43</strong> &#x21bb;
         </div>
     </div>
 
@@ -245,8 +249,8 @@
                 <div class="traffic-line"><span class="traffic-label">Behind:</span> <span style="color:#b45309;font-weight:600;">30m until 12:00 (Single)</span></div>
             </td>
             <td class="col-weather">
-                <div>9&deg;C (feels 6&deg;C)</div>
-                <div style="color:#6b7280;">7mph, 8% rain</div>
+                <div>9&deg;C (feels 5&deg;C)</div>
+                <div style="color:#6b7280;">10mph, 8% rain</div>
             </td>
             <td class="col-action">
                 <a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a>
@@ -268,8 +272,8 @@
                 <div class="traffic-line"><span class="traffic-label">Behind:</span> <span style="color:#b45309;font-weight:600;">20m until 12:00 (Single)</span></div>
             </td>
             <td class="col-weather">
-                <div>9&deg;C (feels 6&deg;C)</div>
-                <div style="color:#6b7280;">7mph, 8% rain</div>
+                <div>9&deg;C (feels 5&deg;C)</div>
+                <div style="color:#6b7280;">10mph, 8% rain</div>
             </td>
             <td class="col-action">
                 <a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a>
@@ -291,8 +295,8 @@
                 <div class="traffic-line"><span class="traffic-label">Behind:</span> <span style="color:#1e3a8a;font-weight:600;">40m until 13:30 (<span style="white-space:nowrap;">4-ball</span>)</span></div>
             </td>
             <td class="col-weather">
-                <div>10&deg;C (feels 8&deg;C)</div>
-                <div style="color:#6b7280;">6mph, 3% rain</div>
+                <div>10&deg;C (feels 6&deg;C)</div>
+                <div style="color:#6b7280;">9mph, 3% rain</div>
             </td>
             <td class="col-action">
                 <a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a>
@@ -314,8 +318,8 @@
                 <div class="traffic-line"><span class="traffic-label">Behind:</span> <span style="color:#1e3a8a;font-weight:600;">30m until 13:30 (<span style="white-space:nowrap;">4-ball</span>)</span></div>
             </td>
             <td class="col-weather">
-                <div>10&deg;C (feels 8&deg;C)</div>
-                <div style="color:#6b7280;">6mph, 3% rain</div>
+                <div>10&deg;C (feels 6&deg;C)</div>
+                <div style="color:#6b7280;">9mph, 3% rain</div>
             </td>
             <td class="col-action">
                 <a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a>
@@ -361,7 +365,7 @@
             </td>
             <td class="col-weather">
                 <div>12&deg;C (feels 8&deg;C)</div>
-                <div style="color:#6b7280;">9mph, 0% rain</div>
+                <div style="color:#6b7280;">11mph, 0% rain</div>
             </td>
             <td class="col-action">
                 <a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a>
@@ -384,7 +388,7 @@
             </td>
             <td class="col-weather">
                 <div>12&deg;C (feels 8&deg;C)</div>
-                <div style="color:#6b7280;">9mph, 0% rain</div>
+                <div style="color:#6b7280;">11mph, 0% rain</div>
             </td>
             <td class="col-action">
                 <a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a>
@@ -407,7 +411,7 @@
             </td>
             <td class="col-weather">
                 <div>12&deg;C (feels 8&deg;C)</div>
-                <div style="color:#6b7280;">9mph, 0% rain</div>
+                <div style="color:#6b7280;">11mph, 0% rain</div>
             </td>
             <td class="col-action">
                 <a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a>
@@ -430,7 +434,7 @@
             </td>
             <td class="col-weather">
                 <div>12&deg;C (feels 8&deg;C)</div>
-                <div style="color:#6b7280;">9mph, 0% rain</div>
+                <div style="color:#6b7280;">11mph, 0% rain</div>
             </td>
             <td class="col-action">
                 <a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a>
@@ -445,6 +449,11 @@
         let currentRoundFilter = '18';
         let currentDayFilter = 'all';
         const totalSlots = 9;
+
+        function forceRefresh() {
+            const cleanUrl = window.location.origin + window.location.pathname;
+            window.location.replace(cleanUrl + '?t=' + Date.now());
+        }
 
         function updateFilters() {
             const rows = document.querySelectorAll('.slot-row');
@@ -526,15 +535,19 @@
             });
         });
 
+        // Auto-refresh when reopening app after 3 minutes in background
         document.addEventListener('visibilitychange', function() {
             if (document.visibilityState === 'visible') {
                 const pageAge = (Date.now() - window.pageLoadedTime) / 1000;
-                if (pageAge > 300) {
-                    window.location.reload(true);
+                if (pageAge > 180) {
+                    forceRefresh();
                 }
             }
         });
         window.pageLoadedTime = Date.now();
+
+        // Standard 15-minute background timer with cache busting
+        setTimeout(forceRefresh, 900000);
 
         updateFilters();
     </script>
