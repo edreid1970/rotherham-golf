@@ -1,250 +1,178 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Practice Windows">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="900">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="RGC Practice">
+    
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="apple-touch-icon.png">
 
-<meta http-equiv="refresh" content="900">
-<title>Rotherham Practice Windows</title>
-<style>
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        background-color: #f4f6f8;
-        color: #212529;
-        margin: 0;
-        padding: 16px;
-    }
-    .container {
-        max-width: 1060px;
-        margin: 0 auto;
-    }
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 14px;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    h1 {
-        margin: 0;
-        font-size: 21px;
-        color: #1a365d;
-    }
-    .slot-summary {
-        font-size: 13px;
-        color: #475569;
-        margin-top: 3px;
-    }
-    .meta {
-        font-size: 13px;
-        color: #64748b;
-        background: #fff;
-        padding: 6px 12px;
-        border-radius: 6px;
-        border: 1px solid #e2e8f0;
-    }
-    .controls-wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 14px;
-    }
-    .filter-bar {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-        align-items: center;
-    }
-    .filter-label {
-        font-size: 13px;
-        font-weight: 600;
-        color: #475569;
-        margin-right: 4px;
-    }
-    .filter-btn {
-        background: #ffffff;
-        border: 1px solid #cbd5e1;
-        border-radius: 6px;
-        padding: 5px 12px;
-        font-size: 13px;
-        cursor: pointer;
-        color: #334155;
-        white-space: nowrap;
-    }
-    .filter-btn.active {
-        background: #1a365d;
-        color: #ffffff;
-        border-color: #1a365d;
-    }
-    .card {
-        background: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-        border: 1px solid #e2e8f0;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        text-align: left;
-        font-size: 13.5px;
-    }
-    th {
-        background-color: #f8fafc;
-        padding: 9px 10px;
-        font-weight: 600;
-        color: #475569;
-        border-bottom: 1px solid #e2e8f0;
-        white-space: nowrap;
-    }
-    td {
-        padding: 8px 10px;
-        border-bottom: 1px solid #f1f5f9;
-        vertical-align: middle;
-        white-space: nowrap;
-    }
-    tr:hover td {
-        background-color: #f8fafc;
-    }
-    .day-col {
-        font-weight: 600;
-        color: #334155;
-    }
-    .time-col {
-        font-weight: 700;
-        color: #0f172a;
-    }
-    .sub-text {
-        font-size: 11px;
-        color: #64748b;
-    }
-    .gap-pill {
-        display: inline-block;
-        padding: 2px 7px;
-        border-radius: 4px;
-        background-color: #f1f5f9;
-        font-size: 12.5px;
-    }
-    .large-gap {
-        background-color: #dcfce7;
-        color: #166534;
-        font-weight: 600;
-    }
-    .prime-pill {
-        display: inline-block;
-        padding: 2px 6px;
-        border-radius: 4px;
-        background-color: #fef08a;
-        color: #854d0e;
-        font-size: 10.5px;
-        font-weight: 700;
-        margin-left: 4px;
-        vertical-align: middle;
-    }
-    .round-badge {
-        display: inline-block;
-        padding: 2px 7px;
-        border-radius: 4px;
-        font-size: 11.5px;
-        font-weight: 600;
-    }
-    .badge-18 {
-        background-color: #e0f2fe;
-        color: #0369a1;
-    }
-    .badge-12 {
-        background-color: #e0e7ff;
-        color: #3730a3;
-    }
-    .badge-9 {
-        background-color: #fef3c7;
-        color: #92400e;
-    }
-    .book-btn {
-        display: inline-block;
-        padding: 4px 11px;
-        background-color: #0284c7;
-        color: #ffffff;
-        text-decoration: none;
-        border-radius: 4px;
-        font-size: 12px;
-        font-weight: 600;
-    }
-    .book-btn:hover {
-        background-color: #0369a1;
-    }
-    .no-results {
-        text-align: center;
-        padding: 24px !important;
-        color: #64748b;
-        font-size: 13.5px;
-    }
-
-    @media (max-width: 600px) {
+    <title>Rotherham Golf Club - Practice Windows</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            padding: 8px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+            padding: 12px;
         }
         .header {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 8px;
         }
         h1 {
-            font-size: 19px;
+            font-size: 1.4rem;
+            color: #0f2d4a;
+            letter-spacing: -0.02em;
         }
-        .filter-bar {
-            overflow-x: auto;
-            flex-wrap: nowrap;
-            padding-bottom: 4px;
-            -webkit-overflow-scrolling: touch;
+        .subtitle {
+            font-size: 0.85rem;
+            color: #4b5563;
+            margin-top: 2px;
+        }
+        .snapshot-bar {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 0.78rem;
+            color: #6b7280;
+            display: inline-block;
+        }
+        .filter-section {
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .filter-group {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .filter-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #374151;
+            min-width: 55px;
         }
         .filter-btn {
-            padding: 4px 9px;
-            font-size: 12px;
-            flex-shrink: 0;
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            color: #374151;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+        }
+        .filter-btn:hover {
+            background: #f9fafb;
+            border-color: #9ca3af;
+        }
+        .filter-btn.active {
+            background: #0f2d4a;
+            color: #ffffff;
+            border-color: #0f2d4a;
+        }
+        .table-container {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            overflow-x: auto;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
         table {
-            font-size: 12.5px;
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.85rem;
         }
-        th, td {
-            padding: 7px 8px;
+        th {
+            background: #f8fafc;
+            color: #475569;
+            font-weight: 700;
+            padding: 10px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.78rem;
+            letter-spacing: 0.02em;
         }
-    }
-</style>
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: middle;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover td {
+            background-color: #f8fafc;
+        }
+        .badge {
+            display: inline-block;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+        .badge-18 { background: #e0f2fe; color: #0369a1; }
+        .badge-12 { background: #e0e7ff; color: #4338ca; }
+        .badge-9  { background: #fef3c7; color: #b45309; }
+        .prime-badge { background: #fef08a; color: #854d0e; margin-left: 4px; }
+        .book-btn {
+            display: inline-block;
+            background: #0284c7;
+            color: #ffffff;
+            padding: 5px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-align: center;
+        }
+        .book-btn:hover {
+            background: #0369a1;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
     <div class="header">
         <div>
             <h1>Rotherham Golf Club</h1>
-            <div class="slot-summary" id="slotSummary">Practice Windows (4 available slots identified)</div>
+            <div class="subtitle" id="slotCounter">Practice Windows (showing 9 of 9 slots)</div>
         </div>
-        <div class="meta">
-            Snapshot: <strong>21/10/2026 12:45:06</strong> (auto-refreshes every 15m)
+        <div class="snapshot-bar">
+            Snapshot: <strong>21/10/2026 13:52:08</strong> (auto-refreshes every 15m)
         </div>
     </div>
 
-    <div class="controls-wrapper">
-        <div class="filter-bar">
+    <div class="filter-section">
+        <div class="filter-group">
             <span class="filter-label">Rounds:</span>
-            <button class="filter-btn active" data-filter="round" data-val="18" onclick="applyRoundFilter('18', this)">18 Holes</button>
-            <button class="filter-btn" data-filter="round" data-val="12" onclick="applyRoundFilter('12', this)">12 Holes</button>
-            <button class="filter-btn" data-filter="round" data-val="9" onclick="applyRoundFilter('9', this)">9 Holes</button>
-            <button class="filter-btn" data-filter="round" data-val="all" onclick="applyRoundFilter('all', this)">All Windows</button>
+            <button class="filter-btn active" data-filter="round" data-val="18">18 Holes</button>
+            <button class="filter-btn" data-filter="round" data-val="12">12 Holes</button>
+            <button class="filter-btn" data-filter="round" data-val="9">9 Holes</button>
+            <button class="filter-btn" data-filter="round" data-val="all">All Windows</button>
         </div>
-        <div class="filter-bar">
+        <div class="filter-group">
             <span class="filter-label">Day:</span>
-            <button class="filter-btn active" data-filter="date" data-val="all" onclick="applyDateFilter('all', this)">All Days</button><button class="filter-btn" data-filter="date" data-val="2026-10-21" onclick="applyDateFilter('2026-10-21', this)">Wed (21/10)</button><button class="filter-btn" data-filter="date" data-val="2026-10-22" onclick="applyDateFilter('2026-10-22', this)">Thu (22/10)</button>
+            <button class="filter-btn active" data-filter="day" data-val="all">All Days</button>
+<button class="filter-btn" data-filter="day" data-val="2026-10-22">Thu (22/10)</button>
         </div>
     </div>
 
-    <div class="card">
-        <table id="windowsTable">
+    <div class="table-container">
+        <table>
             <thead>
                 <tr>
                     <th>Day & Date</th>
@@ -258,180 +186,241 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="slotsBody">
                 
-        <tr data-date="2026-10-21" data-daylight-mins="254" data-max-round="18" data-max-label="18 Holes">
-            <td class="day-col">Wed 21/10</td>
-            <td class="time-col">13:30 </td>
-            <td><span class="round-badge badge-18">18 Holes</span></td>
-            <td>
-                <div>4h 14m</div>
-                <div class="sub-text">Sunset 17:44</div>
+        <tr id="row-2026-10-22-1120" class="slot-row" data-date="2026-10-22" data-daylight="396">
+            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
+            <td style="white-space:nowrap;font-weight:700;">11:20</td>
+            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
+            <td>6h 36m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
+            <td style="font-weight:600;">30m (3 slots)</td>
+            <td style="font-size:0.82rem;line-height:1.25;">
+                <div>9&deg;C (feels 6&deg;C)</div>
+                <div style="color:#6b7280;">7mph, 8% rain</div>
             </td>
-            <td><span class="gap-pill">50m (5 slots)</span></td>
-            <td>
-                <div>11°C <span class="sub-text">(feels 9°C)</span></div>
-                <div class="sub-text">6mph, 20% rain</div>
-            </td>
-            <td style="color: #166534;">13:20 Clear</td>
-            <td>14:30 (Full)</td>
-            <td><a class="book-btn" href="https://rotherham.intelligentgolf.co.uk/memberbooking/?date=21-10-2026&course=1&group=1" target="_blank">Book</a></td>
+            <td style="font-size:0.85rem;"><span style="color:#4b5563;">11:10 (4-ball)</span></td>
+            <td style="font-size:0.85rem;"><span style="color:#b45309;font-weight:600;">12:00 (Single)</span></td>
+            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
         </tr>
         
-        <tr data-date="2026-10-22" data-daylight-mins="382" data-max-round="18" data-max-label="18 Holes">
-            <td class="day-col">Thu 22/10</td>
-            <td class="time-col">11:20 </td>
-            <td><span class="round-badge badge-18">18 Holes</span></td>
-            <td>
-                <div>6h 22m</div>
-                <div class="sub-text">Sunset 17:42</div>
+
+        <tr id="row-2026-10-22-1130" class="slot-row" data-date="2026-10-22" data-daylight="386">
+            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
+            <td style="white-space:nowrap;font-weight:700;">11:30</td>
+            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
+            <td>6h 26m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
+            <td style="font-weight:600;">20m (2 slots)</td>
+            <td style="font-size:0.82rem;line-height:1.25;">
+                <div>9&deg;C (feels 6&deg;C)</div>
+                <div style="color:#6b7280;">7mph, 8% rain</div>
             </td>
-            <td><span class="gap-pill">30m (3 slots)</span></td>
-            <td>
-                <div>9°C <span class="sub-text">(feels 6°C)</span></div>
-                <div class="sub-text">7mph, 8% rain</div>
-            </td>
-            <td style="color: #64748b;">11:10 Booked</td>
-            <td>12:00 (Partial)</td>
-            <td><a class="book-btn" href="https://rotherham.intelligentgolf.co.uk/memberbooking/?date=22-10-2026&course=1&group=1" target="_blank">Book</a></td>
+            <td style="font-size:0.85rem;"><span style="color:#059669;font-weight:600;">11:20 Clear</span></td>
+            <td style="font-size:0.85rem;"><span style="color:#b45309;font-weight:600;">12:00 (Single)</span></td>
+            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
         </tr>
         
-        <tr data-date="2026-10-22" data-daylight-mins="302" data-max-round="18" data-max-label="18 Holes">
-            <td class="day-col">Thu 22/10</td>
-            <td class="time-col">12:40 </td>
-            <td><span class="round-badge badge-18">18 Holes</span></td>
-            <td>
-                <div>5h 02m</div>
-                <div class="sub-text">Sunset 17:42</div>
+
+        <tr id="row-2026-10-22-1240" class="slot-row" data-date="2026-10-22" data-daylight="316">
+            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
+            <td style="white-space:nowrap;font-weight:700;">12:40</td>
+            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
+            <td>5h 16m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
+            <td style="font-weight:600;">40m (4 slots)</td>
+            <td style="font-size:0.82rem;line-height:1.25;">
+                <div>10&deg;C (feels 8&deg;C)</div>
+                <div style="color:#6b7280;">6mph, 3% rain</div>
             </td>
-            <td><span class="gap-pill">40m (4 slots)</span></td>
-            <td>
-                <div>10°C <span class="sub-text">(feels 8°C)</span></div>
-                <div class="sub-text">6mph, 3% rain</div>
-            </td>
-            <td style="color: #64748b;">12:30 Booked</td>
-            <td>13:30 (Full)</td>
-            <td><a class="book-btn" href="https://rotherham.intelligentgolf.co.uk/memberbooking/?date=22-10-2026&course=1&group=1" target="_blank">Book</a></td>
+            <td style="font-size:0.85rem;"><span style="color:#4b5563;">12:30 (4-ball)</span></td>
+            <td style="font-size:0.85rem;"><span style="color:#1e3a8a;font-weight:600;">13:30 (4-ball)</span></td>
+            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
         </tr>
         
-        <tr data-date="2026-10-22" data-daylight-mins="162" data-max-round="12" data-max-label="12 Holes">
-            <td class="day-col">Thu 22/10</td>
-            <td class="time-col">15:00 </td>
-            <td><span class="round-badge badge-12">12 Holes</span></td>
-            <td>
-                <div>2h 42m</div>
-                <div class="sub-text">Sunset 17:42</div>
+
+        <tr id="row-2026-10-22-1250" class="slot-row" data-date="2026-10-22" data-daylight="306">
+            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
+            <td style="white-space:nowrap;font-weight:700;">12:50</td>
+            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
+            <td>5h 06m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
+            <td style="font-weight:600;">30m (3 slots)</td>
+            <td style="font-size:0.82rem;line-height:1.25;">
+                <div>10&deg;C (feels 8&deg;C)</div>
+                <div style="color:#6b7280;">6mph, 3% rain</div>
             </td>
-            <td><span class="gap-pill">50m (5 slots)</span></td>
-            <td>
-                <div>12°C <span class="sub-text">(feels 8°C)</span></div>
-                <div class="sub-text">9mph, 0% rain</div>
-            </td>
-            <td style="color: #64748b;">14:50 Booked</td>
-            <td>16:00 (Partial)</td>
-            <td><a class="book-btn" href="https://rotherham.intelligentgolf.co.uk/memberbooking/?date=22-10-2026&course=1&group=1" target="_blank">Book</a></td>
+            <td style="font-size:0.85rem;"><span style="color:#059669;font-weight:600;">12:40 Clear</span></td>
+            <td style="font-size:0.85rem;"><span style="color:#1e3a8a;font-weight:600;">13:30 (4-ball)</span></td>
+            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
         </tr>
         
-                <tr id="emptyRow" style="display: none;">
-                    <td colspan="9" class="no-results">No practice windows match your selected filters.</td>
-                </tr>
+
+        <tr id="row-2026-10-22-1300" class="slot-row" data-date="2026-10-22" data-daylight="296">
+            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
+            <td style="white-space:nowrap;font-weight:700;">13:00</td>
+            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
+            <td>4h 56m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
+            <td style="font-weight:600;">20m (2 slots)</td>
+            <td style="font-size:0.82rem;line-height:1.25;">
+                <div>11&deg;C (feels 7&deg;C)</div>
+                <div style="color:#6b7280;">9mph, 0% rain</div>
+            </td>
+            <td style="font-size:0.85rem;"><span style="color:#059669;font-weight:600;">12:50 Clear</span></td>
+            <td style="font-size:0.85rem;"><span style="color:#1e3a8a;font-weight:600;">13:30 (4-ball)</span></td>
+            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
+        </tr>
+        
+
+        <tr id="row-2026-10-22-1500" class="slot-row" data-date="2026-10-22" data-daylight="176">
+            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
+            <td style="white-space:nowrap;font-weight:700;">15:00</td>
+            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
+            <td>2h 56m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
+            <td style="font-weight:600;">50m (5 slots)</td>
+            <td style="font-size:0.82rem;line-height:1.25;">
+                <div>12&deg;C (feels 8&deg;C)</div>
+                <div style="color:#6b7280;">9mph, 0% rain</div>
+            </td>
+            <td style="font-size:0.85rem;"><span style="color:#4b5563;">14:50 (Single)</span></td>
+            <td style="font-size:0.85rem;"><span style="color:#b45309;font-weight:600;">16:00 (Single)</span></td>
+            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
+        </tr>
+        
+
+        <tr id="row-2026-10-22-1510" class="slot-row" data-date="2026-10-22" data-daylight="166">
+            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
+            <td style="white-space:nowrap;font-weight:700;">15:10</td>
+            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
+            <td>2h 46m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
+            <td style="font-weight:600;">40m (4 slots)</td>
+            <td style="font-size:0.82rem;line-height:1.25;">
+                <div>12&deg;C (feels 8&deg;C)</div>
+                <div style="color:#6b7280;">9mph, 0% rain</div>
+            </td>
+            <td style="font-size:0.85rem;"><span style="color:#059669;font-weight:600;">15:00 Clear</span></td>
+            <td style="font-size:0.85rem;"><span style="color:#b45309;font-weight:600;">16:00 (Single)</span></td>
+            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
+        </tr>
+        
+
+        <tr id="row-2026-10-22-1520" class="slot-row" data-date="2026-10-22" data-daylight="156">
+            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
+            <td style="white-space:nowrap;font-weight:700;">15:20</td>
+            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
+            <td>2h 36m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
+            <td style="font-weight:600;">30m (3 slots)</td>
+            <td style="font-size:0.82rem;line-height:1.25;">
+                <div>12&deg;C (feels 8&deg;C)</div>
+                <div style="color:#6b7280;">9mph, 0% rain</div>
+            </td>
+            <td style="font-size:0.85rem;"><span style="color:#059669;font-weight:600;">15:10 Clear</span></td>
+            <td style="font-size:0.85rem;"><span style="color:#b45309;font-weight:600;">16:00 (Single)</span></td>
+            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
+        </tr>
+        
+
+        <tr id="row-2026-10-22-1530" class="slot-row" data-date="2026-10-22" data-daylight="146">
+            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
+            <td style="white-space:nowrap;font-weight:700;">15:30</td>
+            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
+            <td>2h 26m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
+            <td style="font-weight:600;">20m (2 slots)</td>
+            <td style="font-size:0.82rem;line-height:1.25;">
+                <div>12&deg;C (feels 8&deg;C)</div>
+                <div style="color:#6b7280;">9mph, 0% rain</div>
+            </td>
+            <td style="font-size:0.85rem;"><span style="color:#059669;font-weight:600;">15:20 Clear</span></td>
+            <td style="font-size:0.85rem;"><span style="color:#b45309;font-weight:600;">16:00 (Single)</span></td>
+            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
+        </tr>
+        
             </tbody>
         </table>
     </div>
-</div>
 
-<script>
-let currentDayFilter = 'all';
-let currentRoundFilter = '18';
-const totalIdentifiedSlots = 4;
+    <script>
+        let currentRoundFilter = '18';
+        let currentDayFilter = 'all';
+        const totalSlots = 9;
 
-const THRESHOLD_18 = 225;
-const THRESHOLD_12 = 155;
-const THRESHOLD_9 = 120;
+        function updateFilters() {
+            const rows = document.querySelectorAll('.slot-row');
+            let visibleCount = 0;
 
-function applyDateFilter(selectedDate, btn) {
-    document.querySelectorAll('[data-filter="date"]').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentDayFilter = selectedDate;
-    updateTableRows();
-}
+            rows.forEach(row => {
+                const daylight = parseInt(row.getAttribute('data-daylight'), 10);
+                const date = row.getAttribute('data-date');
+                const badge = row.querySelector('.round-badge');
 
-function applyRoundFilter(selectedRound, btn) {
-    document.querySelectorAll('[data-filter="round"]').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentRoundFilter = selectedRound;
-    updateTableRows();
-}
+                let matchesDay = (currentDayFilter === 'all' || date === currentDayFilter);
+                let matchesRound = false;
 
-function updateTableRows() {
-    const rows = document.querySelectorAll('#windowsTable tbody tr:not(#emptyRow)');
-    let visibleCount = 0;
+                if (currentRoundFilter === '18') {
+                    matchesRound = daylight >= 225;
+                    if (badge) {
+                        badge.textContent = '18 Holes';
+                        badge.className = 'badge badge-18 round-badge';
+                    }
+                } else if (currentRoundFilter === '12') {
+                    matchesRound = daylight >= 155;
+                    if (badge) {
+                        badge.textContent = '12 Holes';
+                        badge.className = 'badge badge-12 round-badge';
+                    }
+                } else if (currentRoundFilter === '9') {
+                    matchesRound = daylight >= 120;
+                    if (badge) {
+                        badge.textContent = '9 Holes';
+                        badge.className = 'badge badge-9 round-badge';
+                    }
+                } else if (currentRoundFilter === 'all') {
+                    matchesRound = true;
+                    if (badge) {
+                        if (daylight >= 225) {
+                            badge.textContent = '18 Holes';
+                            badge.className = 'badge badge-18 round-badge';
+                        } else if (daylight >= 155) {
+                            badge.textContent = '12 Holes';
+                            badge.className = 'badge badge-12 round-badge';
+                        } else {
+                            badge.textContent = '9 Holes';
+                            badge.className = 'badge badge-9 round-badge';
+                        }
+                    }
+                }
 
-    rows.forEach(row => {
-        const rowDate = row.getAttribute('data-date');
-        const daylightMins = parseInt(row.getAttribute('data-daylight-mins'), 10);
-        const maxRoundTag = row.getAttribute('data-max-round');
-        const maxRoundLabel = row.getAttribute('data-max-label');
-        const badgeEl = row.querySelector('.round-badge');
+                if (matchesDay && matchesRound) {
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
 
-        const matchesDate = (currentDayFilter === 'all' || rowDate === currentDayFilter);
-
-        let matchesRound = false;
-        let activeBadgeText = maxRoundLabel;
-        let activeBadgeClass = 'badge-' + maxRoundTag;
-
-        if (currentRoundFilter === '18') {
-            if (daylightMins >= THRESHOLD_18) {
-                matchesRound = true;
-                activeBadgeText = '18 Holes';
-                activeBadgeClass = 'badge-18';
+            const counter = document.getElementById('slotCounter');
+            if (counter) {
+                counter.textContent = `Practice Windows (showing ${visibleCount} of ${totalSlots} slots)`;
             }
-        } else if (currentRoundFilter === '12') {
-            if (daylightMins >= THRESHOLD_12) {
-                matchesRound = true;
-                activeBadgeText = '12 Holes';
-                activeBadgeClass = 'badge-12';
-            }
-        } else if (currentRoundFilter === '9') {
-            if (daylightMins >= THRESHOLD_9) {
-                matchesRound = true;
-                activeBadgeText = '9 Holes';
-                activeBadgeClass = 'badge-9';
-            }
-        } else {
-            matchesRound = true;
-            activeBadgeText = maxRoundLabel;
-            activeBadgeClass = 'badge-' + maxRoundTag;
         }
 
-        if (matchesDate && matchesRound) {
-            row.style.display = '';
-            badgeEl.textContent = activeBadgeText;
-            badgeEl.className = 'round-badge ' + activeBadgeClass;
-            visibleCount++;
-        } else {
-            row.style.display = 'none';
-        }
-    });
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filterType = this.getAttribute('data-filter');
+                const filterVal = this.getAttribute('data-val');
 
-    const emptyRow = document.getElementById('emptyRow');
-    if (visibleCount === 0) {
-        emptyRow.style.display = '';
-    } else {
-        emptyRow.style.display = 'none';
-    }
+                document.querySelectorAll(`.filter-btn[data-filter="${filterType}"]`).forEach(b => {
+                    b.classList.remove('active');
+                });
+                this.classList.add('active');
 
-    const summaryEl = document.getElementById('slotSummary');
-    if (currentRoundFilter === 'all' && currentDayFilter === 'all') {
-        summaryEl.textContent = 'Practice Windows (' + totalIdentifiedSlots + ' available slots identified)';
-    } else {
-        summaryEl.textContent = 'Practice Windows (showing ' + visibleCount + ' of ' + totalIdentifiedSlots + ' slots)';
-    }
-}
+                if (filterType === 'round') {
+                    currentRoundFilter = filterVal;
+                } else if (filterType === 'day') {
+                    currentDayFilter = filterVal;
+                }
 
-document.addEventListener('DOMContentLoaded', () => {
-    updateTableRows();
-});
-</script>
+                updateFilters();
+            });
+        });
+
+        updateFilters();
+    </script>
 </body>
 </html>
