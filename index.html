@@ -2,7 +2,7 @@
 <html lang="en-GB">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="refresh" content="900">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -18,60 +18,60 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #f3f4f6;
             color: #1f2937;
-            padding: 12px;
+            padding: 8px;
         }
         .header {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
         }
         h1 {
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             color: #0f2d4a;
             letter-spacing: -0.02em;
         }
         .subtitle {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #4b5563;
-            margin-top: 2px;
+            margin-top: 1px;
         }
         .snapshot-bar {
             background: #ffffff;
             border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 6px 12px;
-            font-size: 0.78rem;
+            border-radius: 6px;
+            padding: 4px 8px;
+            font-size: 0.72rem;
             color: #6b7280;
             display: inline-block;
         }
         .filter-section {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
         }
         .filter-group {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 4px;
         }
         .filter-label {
-            font-size: 0.82rem;
+            font-size: 0.76rem;
             font-weight: 700;
             color: #374151;
-            min-width: 55px;
+            min-width: 48px;
         }
         .filter-btn {
             background: #ffffff;
             border: 1px solid #d1d5db;
             color: #374151;
-            padding: 5px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
+            padding: 4px 9px;
+            border-radius: 5px;
+            font-size: 0.75rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.15s ease-in-out;
@@ -88,29 +88,31 @@
         .table-container {
             background: #ffffff;
             border: 1px solid #e5e7eb;
-            border-radius: 10px;
-            overflow-x: auto;
+            border-radius: 8px;
+            overflow-x: hidden;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
         table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            table-layout: fixed;
         }
         th {
             background: #f8fafc;
             color: #475569;
             font-weight: 700;
-            padding: 10px 12px;
+            padding: 8px 6px;
             border-bottom: 1px solid #e2e8f0;
-            font-size: 0.78rem;
-            letter-spacing: 0.02em;
+            font-size: 0.74rem;
+            letter-spacing: 0.01em;
         }
         td {
-            padding: 10px 12px;
+            padding: 8px 6px;
             border-bottom: 1px solid #f1f5f9;
             vertical-align: middle;
+            word-wrap: break-word;
         }
         tr:last-child td {
             border-bottom: none;
@@ -118,27 +120,69 @@
         tr:hover td {
             background-color: #f8fafc;
         }
+
+        /* Column width distributions */
+        .col-slot { width: 17%; }
+        .col-round { width: 23%; }
+        .col-traffic { width: 33%; }
+        .col-weather { width: 17%; font-size: 0.74rem; line-height: 1.2; }
+        .col-action { width: 10%; text-align: right; }
+
+        .slot-time {
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: #111827;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 3px;
+        }
+        .slot-day {
+            font-size: 0.72rem;
+            color: #6b7280;
+            margin-top: 1px;
+            white-space: nowrap;
+        }
+        .daylight-text {
+            font-size: 0.7rem;
+            color: #6b7280;
+            margin-top: 2px;
+            line-height: 1.15;
+        }
+        .traffic-line {
+            font-size: 0.76rem;
+            line-height: 1.35;
+        }
+        .traffic-label {
+            font-size: 0.7rem;
+            color: #6b7280;
+            font-weight: 600;
+            display: inline-block;
+            min-width: 40px;
+        }
         .badge {
             display: inline-block;
-            padding: 2px 7px;
+            padding: 2px 6px;
             border-radius: 4px;
-            font-size: 0.72rem;
+            font-size: 0.68rem;
             font-weight: 700;
+            white-space: nowrap;
         }
         .badge-18 { background: #e0f2fe; color: #0369a1; }
         .badge-12 { background: #e0e7ff; color: #4338ca; }
         .badge-9  { background: #fef3c7; color: #b45309; }
-        .prime-badge { background: #fef08a; color: #854d0e; margin-left: 4px; }
+        .prime-badge { background: #fef08a; color: #854d0e; font-size: 0.62rem; padding: 1px 4px; }
         .book-btn {
             display: inline-block;
             background: #0284c7;
             color: #ffffff;
-            padding: 5px 12px;
-            border-radius: 5px;
+            padding: 5px 8px;
+            border-radius: 4px;
             text-decoration: none;
-            font-size: 0.78rem;
+            font-size: 0.74rem;
             font-weight: 700;
             text-align: center;
+            white-space: nowrap;
         }
         .book-btn:hover {
             background: #0369a1;
@@ -152,7 +196,7 @@
             <div class="subtitle" id="slotCounter">Practice Windows (showing 9 of 9 slots)</div>
         </div>
         <div class="snapshot-bar">
-            Snapshot: <strong>21/10/2026 14:45:25</strong> (auto-refreshes every 15m)
+            Snapshot: <strong>21/10/2026 14:56:46</strong> (auto-refreshes every 15m)
         </div>
     </div>
 
@@ -175,150 +219,219 @@
         <table>
             <thead>
                 <tr>
-                    <th>Day & Date</th>
-                    <th>Tee Time</th>
-                    <th>Round</th>
-                    <th>Daylight</th>
-                    <th>Weather</th>
-                    <th>Ahead</th>
-                    <th>Behind</th>
-                    <th>Action</th>
+                    <th class="col-slot">Slot</th>
+                    <th class="col-round">Round & Daylight</th>
+                    <th class="col-traffic">Traffic</th>
+                    <th class="col-weather">Weather</th>
+                    <th class="col-action"></th>
                 </tr>
             </thead>
             <tbody id="slotsBody">
                 
         <tr id="row-2026-10-22-1120" class="slot-row" data-date="2026-10-22" data-daylight="396">
-            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
-            <td style="white-space:nowrap;font-weight:700;">11:20</td>
-            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
-            <td>6h 36m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
-            <td style="font-size:0.82rem;line-height:1.25;">
+            <td class="col-slot">
+                <div class="slot-time">11:20 </div>
+                <div class="slot-day">Thu 22/10</div>
+            </td>
+            <td class="col-round">
+                <div><span class="badge badge-18 round-badge">18 Holes</span></div>
+                <div class="daylight-text">6h 36m (Sunset 17:56)</div>
+            </td>
+            <td class="col-traffic">
+                <div class="traffic-line"><span class="traffic-label">Ahead:</span> <span style="color:#1e3a8a;font-weight:600;">11:10 (4-ball)</span></div>
+                <div class="traffic-line"><span class="traffic-label">Behind:</span> <span style="color:#b45309;font-weight:600;">30m until 12:00 (Single)</span></div>
+            </td>
+            <td class="col-weather">
                 <div>9&deg;C (feels 5&deg;C)</div>
                 <div style="color:#6b7280;">10mph, 8% rain</div>
             </td>
-            <td style="font-size:0.85rem;"><span style="color:#1e3a8a;font-weight:600;">11:10 (4-ball)</span></td>
-            <td style="font-size:0.85rem;"><span style="color:#b45309;font-weight:600;">30m until 12:00 (Single)</span></td>
-            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
+            <td class="col-action">
+                <a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a>
+            </td>
         </tr>
         
 
         <tr id="row-2026-10-22-1130" class="slot-row" data-date="2026-10-22" data-daylight="386">
-            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
-            <td style="white-space:nowrap;font-weight:700;">11:30</td>
-            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
-            <td>6h 26m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
-            <td style="font-size:0.82rem;line-height:1.25;">
+            <td class="col-slot">
+                <div class="slot-time">11:30 </div>
+                <div class="slot-day">Thu 22/10</div>
+            </td>
+            <td class="col-round">
+                <div><span class="badge badge-18 round-badge">18 Holes</span></div>
+                <div class="daylight-text">6h 26m (Sunset 17:56)</div>
+            </td>
+            <td class="col-traffic">
+                <div class="traffic-line"><span class="traffic-label">Ahead:</span> <span style="color:#1e3a8a;font-weight:600;">11:10 (4-ball)</span></div>
+                <div class="traffic-line"><span class="traffic-label">Behind:</span> <span style="color:#b45309;font-weight:600;">20m until 12:00 (Single)</span></div>
+            </td>
+            <td class="col-weather">
                 <div>9&deg;C (feels 5&deg;C)</div>
                 <div style="color:#6b7280;">10mph, 8% rain</div>
             </td>
-            <td style="font-size:0.85rem;"><span style="color:#1e3a8a;font-weight:600;">11:10 (4-ball)</span></td>
-            <td style="font-size:0.85rem;"><span style="color:#b45309;font-weight:600;">20m until 12:00 (Single)</span></td>
-            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
+            <td class="col-action">
+                <a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a>
+            </td>
         </tr>
         
 
         <tr id="row-2026-10-22-1240" class="slot-row" data-date="2026-10-22" data-daylight="316">
-            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
-            <td style="white-space:nowrap;font-weight:700;">12:40</td>
-            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
-            <td>5h 16m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
-            <td style="font-size:0.82rem;line-height:1.25;">
+            <td class="col-slot">
+                <div class="slot-time">12:40 </div>
+                <div class="slot-day">Thu 22/10</div>
+            </td>
+            <td class="col-round">
+                <div><span class="badge badge-18 round-badge">18 Holes</span></div>
+                <div class="daylight-text">5h 16m (Sunset 17:56)</div>
+            </td>
+            <td class="col-traffic">
+                <div class="traffic-line"><span class="traffic-label">Ahead:</span> <span style="color:#1e3a8a;font-weight:600;">12:30 (4-ball)</span></div>
+                <div class="traffic-line"><span class="traffic-label">Behind:</span> <span style="color:#1e3a8a;font-weight:600;">40m until 13:30 (4-ball)</span></div>
+            </td>
+            <td class="col-weather">
                 <div>10&deg;C (feels 6&deg;C)</div>
                 <div style="color:#6b7280;">9mph, 3% rain</div>
             </td>
-            <td style="font-size:0.85rem;"><span style="color:#1e3a8a;font-weight:600;">12:30 (4-ball)</span></td>
-            <td style="font-size:0.85rem;"><span style="color:#1e3a8a;font-weight:600;">40m until 13:30 (4-ball)</span></td>
-            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
+            <td class="col-action">
+                <a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a>
+            </td>
         </tr>
         
 
         <tr id="row-2026-10-22-1250" class="slot-row" data-date="2026-10-22" data-daylight="306">
-            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
-            <td style="white-space:nowrap;font-weight:700;">12:50</td>
-            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
-            <td>5h 06m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
-            <td style="font-size:0.82rem;line-height:1.25;">
+            <td class="col-slot">
+                <div class="slot-time">12:50 </div>
+                <div class="slot-day">Thu 22/10</div>
+            </td>
+            <td class="col-round">
+                <div><span class="badge badge-18 round-badge">18 Holes</span></div>
+                <div class="daylight-text">5h 06m (Sunset 17:56)</div>
+            </td>
+            <td class="col-traffic">
+                <div class="traffic-line"><span class="traffic-label">Ahead:</span> <span style="color:#1e3a8a;font-weight:600;">12:30 (4-ball)</span></div>
+                <div class="traffic-line"><span class="traffic-label">Behind:</span> <span style="color:#1e3a8a;font-weight:600;">30m until 13:30 (4-ball)</span></div>
+            </td>
+            <td class="col-weather">
                 <div>10&deg;C (feels 6&deg;C)</div>
                 <div style="color:#6b7280;">9mph, 3% rain</div>
             </td>
-            <td style="font-size:0.85rem;"><span style="color:#1e3a8a;font-weight:600;">12:30 (4-ball)</span></td>
-            <td style="font-size:0.85rem;"><span style="color:#1e3a8a;font-weight:600;">30m until 13:30 (4-ball)</span></td>
-            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
+            <td class="col-action">
+                <a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a>
+            </td>
         </tr>
         
 
         <tr id="row-2026-10-22-1300" class="slot-row" data-date="2026-10-22" data-daylight="296">
-            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
-            <td style="white-space:nowrap;font-weight:700;">13:00</td>
-            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
-            <td>4h 56m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
-            <td style="font-size:0.82rem;line-height:1.25;">
+            <td class="col-slot">
+                <div class="slot-time">13:00 </div>
+                <div class="slot-day">Thu 22/10</div>
+            </td>
+            <td class="col-round">
+                <div><span class="badge badge-18 round-badge">18 Holes</span></div>
+                <div class="daylight-text">4h 56m (Sunset 17:56)</div>
+            </td>
+            <td class="col-traffic">
+                <div class="traffic-line"><span class="traffic-label">Ahead:</span> <span style="color:#1e3a8a;font-weight:600;">12:30 (4-ball)</span></div>
+                <div class="traffic-line"><span class="traffic-label">Behind:</span> <span style="color:#1e3a8a;font-weight:600;">20m until 13:30 (4-ball)</span></div>
+            </td>
+            <td class="col-weather">
                 <div>11&deg;C (feels 7&deg;C)</div>
                 <div style="color:#6b7280;">9mph, 0% rain</div>
             </td>
-            <td style="font-size:0.85rem;"><span style="color:#1e3a8a;font-weight:600;">12:30 (4-ball)</span></td>
-            <td style="font-size:0.85rem;"><span style="color:#1e3a8a;font-weight:600;">20m until 13:30 (4-ball)</span></td>
-            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
+            <td class="col-action">
+                <a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a>
+            </td>
         </tr>
         
 
         <tr id="row-2026-10-22-1500" class="slot-row" data-date="2026-10-22" data-daylight="176">
-            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
-            <td style="white-space:nowrap;font-weight:700;">15:00</td>
-            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
-            <td>2h 56m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
-            <td style="font-size:0.82rem;line-height:1.25;">
+            <td class="col-slot">
+                <div class="slot-time">15:00 </div>
+                <div class="slot-day">Thu 22/10</div>
+            </td>
+            <td class="col-round">
+                <div><span class="badge badge-18 round-badge">18 Holes</span></div>
+                <div class="daylight-text">2h 56m (Sunset 17:56)</div>
+            </td>
+            <td class="col-traffic">
+                <div class="traffic-line"><span class="traffic-label">Ahead:</span> <span style="color:#b45309;font-weight:600;">14:50 (Single)</span></div>
+                <div class="traffic-line"><span class="traffic-label">Behind:</span> <span style="color:#b45309;font-weight:600;">50m until 16:00 (Single)</span></div>
+            </td>
+            <td class="col-weather">
                 <div>12&deg;C (feels 8&deg;C)</div>
                 <div style="color:#6b7280;">11mph, 0% rain</div>
             </td>
-            <td style="font-size:0.85rem;"><span style="color:#b45309;font-weight:600;">14:50 (Single)</span></td>
-            <td style="font-size:0.85rem;"><span style="color:#b45309;font-weight:600;">50m until 16:00 (Single)</span></td>
-            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
+            <td class="col-action">
+                <a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a>
+            </td>
         </tr>
         
 
         <tr id="row-2026-10-22-1510" class="slot-row" data-date="2026-10-22" data-daylight="166">
-            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
-            <td style="white-space:nowrap;font-weight:700;">15:10</td>
-            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
-            <td>2h 46m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
-            <td style="font-size:0.82rem;line-height:1.25;">
+            <td class="col-slot">
+                <div class="slot-time">15:10 </div>
+                <div class="slot-day">Thu 22/10</div>
+            </td>
+            <td class="col-round">
+                <div><span class="badge badge-18 round-badge">18 Holes</span></div>
+                <div class="daylight-text">2h 46m (Sunset 17:56)</div>
+            </td>
+            <td class="col-traffic">
+                <div class="traffic-line"><span class="traffic-label">Ahead:</span> <span style="color:#b45309;font-weight:600;">14:50 (Single)</span></div>
+                <div class="traffic-line"><span class="traffic-label">Behind:</span> <span style="color:#b45309;font-weight:600;">40m until 16:00 (Single)</span></div>
+            </td>
+            <td class="col-weather">
                 <div>12&deg;C (feels 8&deg;C)</div>
                 <div style="color:#6b7280;">11mph, 0% rain</div>
             </td>
-            <td style="font-size:0.85rem;"><span style="color:#b45309;font-weight:600;">14:50 (Single)</span></td>
-            <td style="font-size:0.85rem;"><span style="color:#b45309;font-weight:600;">40m until 16:00 (Single)</span></td>
-            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
+            <td class="col-action">
+                <a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a>
+            </td>
         </tr>
         
 
         <tr id="row-2026-10-22-1520" class="slot-row" data-date="2026-10-22" data-daylight="156">
-            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
-            <td style="white-space:nowrap;font-weight:700;">15:20</td>
-            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
-            <td>2h 36m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
-            <td style="font-size:0.82rem;line-height:1.25;">
+            <td class="col-slot">
+                <div class="slot-time">15:20 </div>
+                <div class="slot-day">Thu 22/10</div>
+            </td>
+            <td class="col-round">
+                <div><span class="badge badge-18 round-badge">18 Holes</span></div>
+                <div class="daylight-text">2h 36m (Sunset 17:56)</div>
+            </td>
+            <td class="col-traffic">
+                <div class="traffic-line"><span class="traffic-label">Ahead:</span> <span style="color:#b45309;font-weight:600;">14:50 (Single)</span></div>
+                <div class="traffic-line"><span class="traffic-label">Behind:</span> <span style="color:#b45309;font-weight:600;">30m until 16:00 (Single)</span></div>
+            </td>
+            <td class="col-weather">
                 <div>12&deg;C (feels 8&deg;C)</div>
                 <div style="color:#6b7280;">11mph, 0% rain</div>
             </td>
-            <td style="font-size:0.85rem;"><span style="color:#b45309;font-weight:600;">14:50 (Single)</span></td>
-            <td style="font-size:0.85rem;"><span style="color:#b45309;font-weight:600;">30m until 16:00 (Single)</span></td>
-            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
+            <td class="col-action">
+                <a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a>
+            </td>
         </tr>
         
 
         <tr id="row-2026-10-22-1530" class="slot-row" data-date="2026-10-22" data-daylight="146">
-            <td style="white-space:nowrap;font-weight:600;">Thu 22/10</td>
-            <td style="white-space:nowrap;font-weight:700;">15:30</td>
-            <td><span class="badge badge-18 round-badge">18 Holes</span></td>
-            <td>2h 26m<br><span style='font-size:0.75rem;color:#6b7280;'>Sunset 17:56</span></td>
-            <td style="font-size:0.82rem;line-height:1.25;">
+            <td class="col-slot">
+                <div class="slot-time">15:30 </div>
+                <div class="slot-day">Thu 22/10</div>
+            </td>
+            <td class="col-round">
+                <div><span class="badge badge-18 round-badge">18 Holes</span></div>
+                <div class="daylight-text">2h 26m (Sunset 17:56)</div>
+            </td>
+            <td class="col-traffic">
+                <div class="traffic-line"><span class="traffic-label">Ahead:</span> <span style="color:#b45309;font-weight:600;">14:50 (Single)</span></div>
+                <div class="traffic-line"><span class="traffic-label">Behind:</span> <span style="color:#b45309;font-weight:600;">20m until 16:00 (Single)</span></div>
+            </td>
+            <td class="col-weather">
                 <div>12&deg;C (feels 8&deg;C)</div>
                 <div style="color:#6b7280;">11mph, 0% rain</div>
             </td>
-            <td style="font-size:0.85rem;"><span style="color:#b45309;font-weight:600;">14:50 (Single)</span></td>
-            <td style="font-size:0.85rem;"><span style="color:#b45309;font-weight:600;">20m until 16:00 (Single)</span></td>
-            <td><a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a></td>
+            <td class="col-action">
+                <a href="https://www.rotherhamgolfclub.com/members/tee-sheet/?date=2026-10-22" target="_blank" class="book-btn">Book</a>
+            </td>
         </tr>
         
             </tbody>
