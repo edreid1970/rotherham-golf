@@ -6,6 +6,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Practice Windows">
 
+<link rel="apple-touch-icon" href="rotherhamgolfclub.png">
+<link rel="icon" type="image/png" href="rotherhamgolfclub.png">
+
 <meta http-equiv="refresh" content="900">
 <title>Rotherham Practice Windows</title>
 <style>
@@ -219,7 +222,7 @@
     <div class="header">
         <div>
             <h1>Rotherham Golf Club</h1>
-            <div class="slot-summary" id="slotSummary">Practice Windows (5 available slots identified)</div>
+            <div class="slot-summary" id="slotSummary">Practice Windows (4 available slots identified)</div>
         </div>
         <div class="meta">
             Snapshot: <strong>21/10/2026 11:45:05</strong> (auto-refreshes every 15m)
@@ -236,7 +239,7 @@
         </div>
         <div class="filter-bar">
             <span class="filter-label">Day:</span>
-            <button class="filter-btn active" data-filter="date" data-val="all" onclick="applyDateFilter('all', this)">All Days</button><button class="filter-btn" data-filter="date" data-val="2026-10-21" onclick="applyDateFilter('2026-10-21', this)">Wed (21/10)</button><button class="filter-btn" data-filter="date" data-val="2026-10-22" onclick="applyDateFilter('2026-10-22', this)">Thu (22/10)</button><button class="filter-btn" data-filter="date" data-val="2026-10-27" onclick="applyDateFilter('2026-10-27', this)">Tue (27/10)</button>
+            <button class="filter-btn active" data-filter="date" data-val="all" onclick="applyDateFilter('all', this)">All Days</button><button class="filter-btn" data-filter="date" data-val="2026-10-21" onclick="applyDateFilter('2026-10-21', this)">Wed (21/10)</button><button class="filter-btn" data-filter="date" data-val="2026-10-22" onclick="applyDateFilter('2026-10-22', this)">Thu (22/10)</button>
         </div>
     </div>
 
@@ -268,7 +271,7 @@
             <td><span class="gap-pill">1h 50m (11 slots)</span></td>
             <td>
                 <div>10°C <span class="sub-text">(feels 7°C)</span></div>
-                <div class="sub-text">9mph, 24% rain</div>
+                <div class="sub-text">9mph, 9% rain</div>
             </td>
             <td style="color: #64748b;">12:20 Booked</td>
             <td>14:30 (Full)</td>
@@ -286,7 +289,7 @@
             <td><span class="gap-pill">30m (3 slots)</span></td>
             <td>
                 <div>9°C <span class="sub-text">(feels 6°C)</span></div>
-                <div class="sub-text">7mph, 9% rain</div>
+                <div class="sub-text">7mph, 8% rain</div>
             </td>
             <td style="color: #64748b;">11:10 Booked</td>
             <td>12:00 (Partial)</td>
@@ -329,24 +332,6 @@
             <td><a class="book-btn" href="https://rotherham.intelligentgolf.co.uk/memberbooking/?date=22-10-2026&course=1&group=1" target="_blank">Book</a></td>
         </tr>
         
-        <tr data-date="2026-10-27" data-daylight-mins="152" data-max-round="9" data-max-label="9 Holes">
-            <td class="day-col">Tue 27/10</td>
-            <td class="time-col">14:00 </td>
-            <td><span class="round-badge badge-9">9 Holes</span></td>
-            <td>
-                <div>2h 32m</div>
-                <div class="sub-text">Sunset 16:32</div>
-            </td>
-            <td><span class="gap-pill large-gap">2h 32m (capped by sunset)</span></td>
-            <td>
-                <div>14°C <span class="sub-text">(feels 10°C)</span></div>
-                <div class="sub-text">12mph, 25% rain</div>
-            </td>
-            <td style="color: #166534;">13:50 Clear</td>
-            <td>19:00 (Closed)</td>
-            <td><a class="book-btn" href="https://rotherham.intelligentgolf.co.uk/memberbooking/?date=27-10-2026&course=1&group=1" target="_blank">Book</a></td>
-        </tr>
-        
                 <tr id="emptyRow" style="display: none;">
                     <td colspan="9" class="no-results">No practice windows match your selected filters.</td>
                 </tr>
@@ -358,7 +343,7 @@
 <script>
 let currentDayFilter = 'all';
 let currentRoundFilter = '18';
-const totalIdentifiedSlots = 5;
+const totalIdentifiedSlots = 4;
 
 const THRESHOLD_18 = 225;
 const THRESHOLD_12 = 155;
