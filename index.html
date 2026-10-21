@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Practice Windows">
+
+<meta http-equiv="refresh" content="900">
+<title>Rotherham Practice Windows</title>
+<style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: #f4f6f8;
+        color: #212529;
+        margin: 0;
+        padding: 16px;
+    }
+    .container {
+        max-width: 1060px;
+        margin: 0 auto;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    h1 {
+        margin: 0;
+        font-size: 21px;
+        color: #1a365d;
+    }
+    .slot-summary {
+        font-size: 13px;
+        color: #475569;
+        margin-top: 3px;
+    }
+    .meta {
+        font-size: 13px;
+        color: #64748b;
+        background: #fff;
+        padding: 6px 12px;
+        border-radius: 6px;
+        border: 1px solid #e2e8f0;
+    }
+    .controls-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 14px;
+    }
+    .filter-bar {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .filter-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #475569;
+        margin-right: 4px;
+    }
+    .filter-btn {
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        padding: 5px 12px;
+        font-size: 13px;
+        cursor: pointer;
+        color: #334155;
+        white-space: nowrap;
+    }
+    .filter-btn.active {
+        background: #1a365d;
+        color: #ffffff;
+        border-color: #1a365d;
+    }
+    .card {
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        border: 1px solid #e2e8f0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        font-size: 13.5px;
+    }
+    th {
+        background-color: #f8fafc;
+        padding: 9px 10px;
+        font-weight: 600;
+        color: #475569;
+        border-bottom: 1px solid #e2e8f0;
+        white-space: nowrap;
+    }
+    td {
+        padding: 8px 10px;
+        border-bottom: 1px solid #f1f5f9;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+    tr:hover td {
+        background-color: #f8fafc;
+    }
+    .day-col {
+        font-weight: 600;
+        color: #334155;
+    }
+    .time-col {
+        font-weight: 700;
+        color: #0f172a;
+    }
+    .sub-text {
+        font-size: 11px;
+        color: #64748b;
+    }
+    .gap-pill {
+        display: inline-block;
+        padding: 2px 7px;
+        border-radius: 4px;
+        background-color: #f1f5f9;
+        font-size: 12.5px;
+    }
+    .large-gap {
+        background-color: #dcfce7;
+        color: #166534;
+        font-weight: 600;
+    }
+    .prime-pill {
+        display: inline-block;
+        padding: 2px 6px;
+        border-radius: 4px;
+        background-color: #fef08a;
+        color: #854d0e;
+        font-size: 10.5px;
+        font-weight: 700;
+        margin-left: 4px;
+        vertical-align: middle;
+    }
+    .round-badge {
+        display: inline-block;
+        padding: 2px 7px;
+        border-radius: 4px;
+        font-size: 11.5px;
+        font-weight: 600;
+    }
+    .badge-18 {
+        background-color: #e0f2fe;
+        color: #0369a1;
+    }
+    .badge-12 {
+        background-color: #e0e7ff;
+        color: #3730a3;
+    }
+    .badge-9 {
+        background-color: #fef3c7;
+        color: #92400e;
+    }
+    .book-btn {
+        display: inline-block;
+        padding: 4px 11px;
+        background-color: #0284c7;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+    .book-btn:hover {
+        background-color: #0369a1;
+    }
+    .no-results {
+        text-align: center;
+        padding: 24px !important;
+        color: #64748b;
+        font-size: 13.5px;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            padding: 8px;
+        }
+        .header {
+            margin-bottom: 10px;
+        }
+        h1 {
+            font-size: 19px;
+        }
+        .filter-bar {
+            overflow-x: auto;
+            flex-wrap: nowrap;
+            padding-bottom: 4px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .filter-btn {
+            padding: 4px 9px;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+        table {
+            font-size: 12.5px;
+        }
+        th, td {
+            padding: 7px 8px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div>
+            <h1>Rotherham Golf Club</h1>
+            <div class="slot-summary" id="slotSummary">Practice Windows (5 available slots identified)</div>
+        </div>
+        <div class="meta">
+            Snapshot: <strong>21/10/2026 11:45:05</strong> (auto-refreshes every 15m)
+        </div>
+    </div>
+
+    <div class="controls-wrapper">
+        <div class="filter-bar">
+            <span class="filter-label">Rounds:</span>
+            <button class="filter-btn active" data-filter="round" data-val="18" onclick="applyRoundFilter('18', this)">18 Holes</button>
+            <button class="filter-btn" data-filter="round" data-val="12" onclick="applyRoundFilter('12', this)">12 Holes</button>
+            <button class="filter-btn" data-filter="round" data-val="9" onclick="applyRoundFilter('9', this)">9 Holes</button>
+            <button class="filter-btn" data-filter="round" data-val="all" onclick="applyRoundFilter('all', this)">All Windows</button>
+        </div>
+        <div class="filter-bar">
+            <span class="filter-label">Day:</span>
+            <button class="filter-btn active" data-filter="date" data-val="all" onclick="applyDateFilter('all', this)">All Days</button><button class="filter-btn" data-filter="date" data-val="2026-10-21" onclick="applyDateFilter('2026-10-21', this)">Wed (21/10)</button><button class="filter-btn" data-filter="date" data-val="2026-10-22" onclick="applyDateFilter('2026-10-22', this)">Thu (22/10)</button><button class="filter-btn" data-filter="date" data-val="2026-10-27" onclick="applyDateFilter('2026-10-27', this)">Tue (27/10)</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <table id="windowsTable">
+            <thead>
+                <tr>
+                    <th>Day & Date</th>
+                    <th>Tee Time</th>
+                    <th>Round</th>
+                    <th>Daylight</th>
+                    <th>Free Behind</th>
+                    <th>Weather</th>
+                    <th>Ahead</th>
+                    <th>Behind</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+        <tr data-date="2026-10-21" data-daylight-mins="314" data-max-round="18" data-max-label="18 Holes">
+            <td class="day-col">Wed 21/10</td>
+            <td class="time-col">12:30 <span class="prime-pill" title="Generous buffer & calm weather">Prime</span></td>
+            <td><span class="round-badge badge-18">18 Holes</span></td>
+            <td>
+                <div>5h 14m</div>
+                <div class="sub-text">Sunset 17:44</div>
+            </td>
+            <td><span class="gap-pill">1h 50m (11 slots)</span></td>
+            <td>
+                <div>10°C <span class="sub-text">(feels 7°C)</span></div>
+                <div class="sub-text">9mph, 24% rain</div>
+            </td>
+            <td style="color: #64748b;">12:20 Booked</td>
+            <td>14:30 (Full)</td>
+            <td><a class="book-btn" href="https://rotherham.intelligentgolf.co.uk/memberbooking/?date=21-10-2026&course=1&group=1" target="_blank">Book</a></td>
+        </tr>
+        
+        <tr data-date="2026-10-22" data-daylight-mins="382" data-max-round="18" data-max-label="18 Holes">
+            <td class="day-col">Thu 22/10</td>
+            <td class="time-col">11:20 </td>
+            <td><span class="round-badge badge-18">18 Holes</span></td>
+            <td>
+                <div>6h 22m</div>
+                <div class="sub-text">Sunset 17:42</div>
+            </td>
+            <td><span class="gap-pill">30m (3 slots)</span></td>
+            <td>
+                <div>9°C <span class="sub-text">(feels 6°C)</span></div>
+                <div class="sub-text">7mph, 9% rain</div>
+            </td>
+            <td style="color: #64748b;">11:10 Booked</td>
+            <td>12:00 (Partial)</td>
+            <td><a class="book-btn" href="https://rotherham.intelligentgolf.co.uk/memberbooking/?date=22-10-2026&course=1&group=1" target="_blank">Book</a></td>
+        </tr>
+        
+        <tr data-date="2026-10-22" data-daylight-mins="302" data-max-round="18" data-max-label="18 Holes">
+            <td class="day-col">Thu 22/10</td>
+            <td class="time-col">12:40 </td>
+            <td><span class="round-badge badge-18">18 Holes</span></td>
+            <td>
+                <div>5h 02m</div>
+                <div class="sub-text">Sunset 17:42</div>
+            </td>
+            <td><span class="gap-pill">40m (4 slots)</span></td>
+            <td>
+                <div>10°C <span class="sub-text">(feels 8°C)</span></div>
+                <div class="sub-text">6mph, 3% rain</div>
+            </td>
+            <td style="color: #64748b;">12:30 Booked</td>
+            <td>13:30 (Full)</td>
+            <td><a class="book-btn" href="https://rotherham.intelligentgolf.co.uk/memberbooking/?date=22-10-2026&course=1&group=1" target="_blank">Book</a></td>
+        </tr>
+        
+        <tr data-date="2026-10-22" data-daylight-mins="162" data-max-round="12" data-max-label="12 Holes">
+            <td class="day-col">Thu 22/10</td>
+            <td class="time-col">15:00 </td>
+            <td><span class="round-badge badge-12">12 Holes</span></td>
+            <td>
+                <div>2h 42m</div>
+                <div class="sub-text">Sunset 17:42</div>
+            </td>
+            <td><span class="gap-pill">50m (5 slots)</span></td>
+            <td>
+                <div>12°C <span class="sub-text">(feels 8°C)</span></div>
+                <div class="sub-text">9mph, 0% rain</div>
+            </td>
+            <td style="color: #64748b;">14:50 Booked</td>
+            <td>16:00 (Partial)</td>
+            <td><a class="book-btn" href="https://rotherham.intelligentgolf.co.uk/memberbooking/?date=22-10-2026&course=1&group=1" target="_blank">Book</a></td>
+        </tr>
+        
+        <tr data-date="2026-10-27" data-daylight-mins="152" data-max-round="9" data-max-label="9 Holes">
+            <td class="day-col">Tue 27/10</td>
+            <td class="time-col">14:00 </td>
+            <td><span class="round-badge badge-9">9 Holes</span></td>
+            <td>
+                <div>2h 32m</div>
+                <div class="sub-text">Sunset 16:32</div>
+            </td>
+            <td><span class="gap-pill large-gap">2h 32m (capped by sunset)</span></td>
+            <td>
+                <div>14°C <span class="sub-text">(feels 10°C)</span></div>
+                <div class="sub-text">12mph, 25% rain</div>
+            </td>
+            <td style="color: #166534;">13:50 Clear</td>
+            <td>19:00 (Closed)</td>
+            <td><a class="book-btn" href="https://rotherham.intelligentgolf.co.uk/memberbooking/?date=27-10-2026&course=1&group=1" target="_blank">Book</a></td>
+        </tr>
+        
+                <tr id="emptyRow" style="display: none;">
+                    <td colspan="9" class="no-results">No practice windows match your selected filters.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+let currentDayFilter = 'all';
+let currentRoundFilter = '18';
+const totalIdentifiedSlots = 5;
+
+const THRESHOLD_18 = 225;
+const THRESHOLD_12 = 155;
+const THRESHOLD_9 = 120;
+
+function applyDateFilter(selectedDate, btn) {
+    document.querySelectorAll('[data-filter="date"]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentDayFilter = selectedDate;
+    updateTableRows();
+}
+
+function applyRoundFilter(selectedRound, btn) {
+    document.querySelectorAll('[data-filter="round"]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentRoundFilter = selectedRound;
+    updateTableRows();
+}
+
+function updateTableRows() {
+    const rows = document.querySelectorAll('#windowsTable tbody tr:not(#emptyRow)');
+    let visibleCount = 0;
+
+    rows.forEach(row => {
+        const rowDate = row.getAttribute('data-date');
+        const daylightMins = parseInt(row.getAttribute('data-daylight-mins'), 10);
+        const maxRoundTag = row.getAttribute('data-max-round');
+        const maxRoundLabel = row.getAttribute('data-max-label');
+        const badgeEl = row.querySelector('.round-badge');
+
+        const matchesDate = (currentDayFilter === 'all' || rowDate === currentDayFilter);
+
+        let matchesRound = false;
+        let activeBadgeText = maxRoundLabel;
+        let activeBadgeClass = 'badge-' + maxRoundTag;
+
+        if (currentRoundFilter === '18') {
+            if (daylightMins >= THRESHOLD_18) {
+                matchesRound = true;
+                activeBadgeText = '18 Holes';
+                activeBadgeClass = 'badge-18';
+            }
+        } else if (currentRoundFilter === '12') {
+            if (daylightMins >= THRESHOLD_12) {
+                matchesRound = true;
+                activeBadgeText = '12 Holes';
+                activeBadgeClass = 'badge-12';
+            }
+        } else if (currentRoundFilter === '9') {
+            if (daylightMins >= THRESHOLD_9) {
+                matchesRound = true;
+                activeBadgeText = '9 Holes';
+                activeBadgeClass = 'badge-9';
+            }
+        } else {
+            matchesRound = true;
+            activeBadgeText = maxRoundLabel;
+            activeBadgeClass = 'badge-' + maxRoundTag;
+        }
+
+        if (matchesDate && matchesRound) {
+            row.style.display = '';
+            badgeEl.textContent = activeBadgeText;
+            badgeEl.className = 'round-badge ' + activeBadgeClass;
+            visibleCount++;
+        } else {
+            row.style.display = 'none';
+        }
+    });
+
+    const emptyRow = document.getElementById('emptyRow');
+    if (visibleCount === 0) {
+        emptyRow.style.display = '';
+    } else {
+        emptyRow.style.display = 'none';
+    }
+
+    const summaryEl = document.getElementById('slotSummary');
+    if (currentRoundFilter === 'all' && currentDayFilter === 'all') {
+        summaryEl.textContent = 'Practice Windows (' + totalIdentifiedSlots + ' available slots identified)';
+    } else {
+        summaryEl.textContent = 'Practice Windows (showing ' + visibleCount + ' of ' + totalIdentifiedSlots + ' slots)';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateTableRows();
+});
+</script>
+</body>
+</html>
